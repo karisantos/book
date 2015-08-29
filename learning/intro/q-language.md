@@ -7,7 +7,14 @@
 
 | Language | # of Students |
 | -- | -- |
-| Assembly | 0 |
+
+| JS | 3 |
+| Python | 8 | 
+| C | 3 | 
+| Java | 3 | 
+| Haskell | 1 | 
+| C++ | 2 | 
+| C# | 1 | 
 
 ((more rows to complete the table))
 
@@ -24,5 +31,6 @@
 <!-- extend this into a barchart -->
 <rect x="0" width="20" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
 <rect x="30" width="20" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+<rect x="60" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
 
 {% endsvg %}
