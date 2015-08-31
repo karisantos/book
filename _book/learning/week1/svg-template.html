@@ -40,7 +40,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.2.1" data-basepath="../.." data-revision="Fri Aug 28 2015 18:54:14 GMT-0600 (MDT)">
+    <div class="book" data-level="1.2.1" data-basepath="../.." data-revision="Sun Aug 30 2015 22:22:46 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -434,24 +434,49 @@ to render a whole bunch of elements.</p>
 <p>Now it&apos;s your team&apos;s turn to work together to complete the challenges below.</p>
 <h2 id="1d-data">1D Data</h2>
 <h3 id="a-list-of-numbers">A list of numbers</h3>
-<p>Draw negative numbers in red and positive numbers in green.</p>
-<li>43</li>
+<p>Draw negative numbers in red and positive numbers in green. </p>
+<style>
+   span.pos_num {color: green}
+   span.neg_num {color: red}
 
-<li>21</li>
+</style>
 
-<li>-13</li>
 
-<li>32</li>
 
-<li>20</li>
+<li><span class="pos_num">43</span></li>
 
-<li>5</li>
 
-<li>-8</li>
 
-<li>29</li>
+<li><span class="pos_num">21</span></li>
 
-<li>9</li>
+
+
+<li><span class="neg_num">-13</span></li>
+
+
+
+<li><span class="pos_num">32</span></li>
+
+
+
+<li><span class="pos_num">20</span></li>
+
+
+
+<li><span class="pos_num">5</span></li>
+
+
+
+<li><span class="neg_num">-8</span></li>
+
+
+
+<li><span class="pos_num">29</span></li>
+
+
+
+<li><span class="pos_num">9</span></li>
+
 
 
 <p>(Hint: use the <a href="https://mozilla.github.io/nunjucks/templating.html#if" target="_blank">if tag</a>)</p>
@@ -462,19 +487,21 @@ to render a whole bunch of elements.</p>
 </ul>
 <svg width="500" height="200">
 
-    <rect x="20" width="20" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect x="40" width="20" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect x="60" width="20" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+    <rect x="30" width="20" y="154" height="43" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect x="80" width="20" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+    <rect x="60" width="20" y="176" height="21" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect x="100" width="20" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+    <rect x="90" width="20" y="165" height="32" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect x="120" width="20" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+    <rect x="120" width="20" y="177" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect x="140" width="20" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+    <rect x="150" width="20" y="192" height="5" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+
+    <rect x="180" width="20" y="168" height="29" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+
+    <rect x="210" width="20" y="188" height="9" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
 </svg>
 
@@ -482,21 +509,28 @@ to render a whole bunch of elements.</p>
 <ul>
 <li>Same as the previous, but bars are horizontal.</li>
 </ul>
-<svg width="500" height="200">
+<svg width="500" height="220">
 
-    <rect y="20" width="100" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect y="40" width="100" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+    <rect y="25" width="43" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect y="60" width="100" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect y="80" width="100" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+    <rect y="50" width="21" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect y="100" width="100" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect y="120" width="100" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+    <rect y="75" width="32" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
-    <rect y="140" width="100" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+
+    <rect y="100" width="20" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+
+
+    <rect y="125" width="5" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+
+
+    <rect y="150" width="29" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
+
+
+    <rect y="175" width="9" height="20" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
 
 </svg>
 
@@ -509,28 +543,43 @@ to render a whole bunch of elements.</p>
 <table>
 
         <tr>
-            <!-- Add your code here  -->
-            <td>10</td><td>15</td>
+
+            <td>10</td>
+
+            <td>15</td>
+
         </tr>
 
         <tr>
-            <!-- Add your code here  -->
-            <td>10</td><td>15</td>
+
+            <td>20</td>
+
+            <td>12</td>
+
         </tr>
 
         <tr>
-            <!-- Add your code here  -->
-            <td>10</td><td>15</td>
+
+            <td>31</td>
+
+            <td>42</td>
+
         </tr>
 
         <tr>
-            <!-- Add your code here  -->
-            <td>10</td><td>15</td>
+
+            <td>12</td>
+
+            <td>52</td>
+
         </tr>
 
         <tr>
-            <!-- Add your code here  -->
-            <td>10</td><td>15</td>
+
+            <td>33</td>
+
+            <td>24</td>
+
         </tr>
 
 </table>
@@ -543,15 +592,28 @@ to render a whole bunch of elements.</p>
 </ul>
 <svg width="500" height="200" style="border:1px solid grey">
 
-    <circle cx="10" cy="15" r="2" stroke="black" stroke-width="3" fill="red"/>
+<text x="0" y="198" fill="black">(0,0)</text>
+<text x="445" y="15" fill="black">(40,60)</text>
 
-    <circle cx="20" cy="12" r="2" stroke="black" stroke-width="3" fill="red"/>
 
-    <circle cx="31" cy="42" r="2" stroke="black" stroke-width="3" fill="red"/>
+    <circle cx="125" cy="150" r="2" stroke="black" stroke-width="1" fill="black"/>
 
-    <circle cx="12" cy="52" r="2" stroke="black" stroke-width="3" fill="red"/>
 
-    <circle cx="33" cy="24" r="2" stroke="black" stroke-width="3" fill="red"/>
+
+    <circle cx="250" cy="160" r="2" stroke="black" stroke-width="1" fill="black"/>
+
+
+
+    <circle cx="387.5" cy="60" r="2" stroke="black" stroke-width="1" fill="black"/>
+
+
+
+    <circle cx="150" cy="26.666666666666657" r="2" stroke="black" stroke-width="1" fill="black"/>
+
+
+
+    <circle cx="412.5" cy="120" r="2" stroke="black" stroke-width="1" fill="black"/>
+
 
 </svg>
 
@@ -559,16 +621,19 @@ to render a whole bunch of elements.</p>
 <p>Now each data point has three values. Extend the previous solution. Use <em>size</em>
 of the circle to represent the third value.</p>
 <svg width="500" height="200" style="border:1px solid grey">
+<text x="0" y="198" fill="black">(0,0)</text>
+<text x="445" y="15" fill="black">(40,60)</text>
 
-    <circle cx="10" cy="15" r="2" stroke="black" stroke-width="3" fill="red"/>
 
-    <circle cx="20" cy="12" r="2" stroke="black" stroke-width="3" fill="red"/>
+ <circle cx="125" cy="150" r="16" stroke="black" stroke-width="3" fill="red"/>
 
-    <circle cx="31" cy="42" r="2" stroke="black" stroke-width="3" fill="red"/>
+ <circle cx="250" cy="160" r="8" stroke="black" stroke-width="3" fill="red"/>
 
-    <circle cx="12" cy="52" r="2" stroke="black" stroke-width="3" fill="red"/>
+ <circle cx="387.5" cy="60" r="24" stroke="black" stroke-width="3" fill="red"/>
 
-    <circle cx="33" cy="24" r="2" stroke="black" stroke-width="3" fill="red"/>
+ <circle cx="150" cy="26.666666666666657" r="4" stroke="black" stroke-width="3" fill="red"/>
+
+ <circle cx="412.5" cy="120" r="24" stroke="black" stroke-width="3" fill="red"/>
 
 </svg>
 
