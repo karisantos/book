@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Intro | book</title>
+        <title>Report | book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.2.0">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../learning/intro/q-big-data.html" />
+    <link rel="next" href="../../learning/week2/viz.html" />
     
     
-    <link rel="prev" href="../../learning/index.html" />
+    <link rel="prev" href="../../learning/week2/index.html" />
     
 
         <!-- head:end -->
@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.1" data-basepath="../.." data-revision="Fri Sep 04 2015 20:42:59 GMT-0600 (MDT)">
+    <div class="book" data-level="1.3.1" data-basepath="../.." data-revision="Fri Sep 04 2015 20:42:59 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -94,7 +94,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="learning/intro/index.html">
+        <li class="chapter " data-level="1.1" data-path="learning/intro/index.html">
             
                 
                     <a href="../../learning/intro/index.html">
@@ -227,7 +227,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="learning/week2/report.html">
+        <li class="chapter active" data-level="1.3.1" data-path="learning/week2/report.html">
             
                 
                     <a href="../../learning/week2/report.html">
@@ -525,13 +525,76 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="learning-challenge-intro">Learning Challenge: Intro</h1>
-<p>This introductory learning challenge has three questions.</p>
-<ul>
-<li>Q: What is big data? (Team)</li>
-<li>Q: Which programming language is the top favorite among the students in our class? (Team)</li>
-<li>Q: What programming languages have the most packages? (Individual)</li>
-</ul>
+                        <h1 id="report">Report</h1>
+<p>There are 26 students who gave a self-introduction. As a
+class, we brainstormed and came up with a long list of further questions we can
+ask based on this data. Our team chose to tackle on the following:</p>
+<h1 id="how-many-students-submitted-personal-information-on-or-before-the-class-deadline-of-8-24-15">How many students submitted personal information on or before the class deadline of 8/24/15?</h1>
+<p><pre>
+<span class="keyword">var</span> dueDate = <span class="keyword">new</span> Date(<span class="number">2015</span>, <span class="number">7</span>, <span class="number">25</span>);  <span class="comment">// start of sept 25 2015 </span>
+
+<span class="comment">// filter array to inculde only students whose create date was before Sept 25 0hrs</span>
+<span class="keyword">var</span> students = _.filter(data.comments, <span class="keyword">function</span>(item) {
+    <span class="keyword">var</span> createDate = <span class="keyword">new</span> Date(item.created_at)
+    <span class="keyword">return</span> (createDate &lt;= dueDate)
+   
+  });
+
+<span class="keyword">return</span> students.length
+</pre></p>
+<p>22 students submitted their personal information by the end of Sept 24, 2015.</p>
+<h1 id="how-many-stuents-have-the-term-computer-or-cs-in-the-description-of-the-department-or-major">How many stuents have the term &quot;computer&quot; or &quot;cs&quot; in the description of the department or major?</h1>
+<p><pre>
+<span class="comment">// find all the comment bodies that have &quot;cs&quot; or csci, then pull out the names into an array</span>
+<span class="keyword">var</span> bodies = _.pluck(data.comments,<span class="string">&apos;body&apos;</span>)
+<span class="keyword">var</span> major = _.filter(bodies, <span class="keyword">function</span>(str) {
+    <span class="comment">// get the major</span>
+    <span class="keyword">var</span> strArray = str.split(<span class="string">&apos;\n&apos;</span>) ;
+    <span class="comment">// Major is element 1</span>
+    <span class="keyword">var</span> major = strArray[<span class="number">1</span>];
+    
+   <span class="keyword">var</span> lower = major.toLowerCase();
+   <span class="comment">// space added in front of term to avoid words where &quot;cs&quot; in middle of word</span>
+   <span class="keyword">return</span> (lower.indexOf(<span class="string">&apos; computer&apos;</span>) &gt; <span class="number">0</span>) | (lower.indexOf(<span class="string">&apos; cs&apos;</span>) &gt; <span class="number">0</span>);
+  });
+
+<span class="keyword">return</span> major.length;
+</pre></p>
+<p>22 have the term &quot;computer&quot;, &quot;cs&quot; or &quot;csci&quot; in the description of the department or major</p>
+<h1 id="who-has-the-user-id-13950166">Who has the user id 13950166?</h1>
+<p><pre>
+x = _.find(data.comments, _.matchesProperty(<span class="string">&quot;user.id&quot;</span>, <span class="number">13950166</span>));
+<span class="keyword">var</span> nameStr = _.first(x.body.split(<span class="string">&apos;\r&apos;</span>));
+<span class="keyword">var</span> name = _.last(nameStr.split(<span class="string">&apos;: &apos;</span>))
+<span class="keyword">return</span> name
+</pre></p>
+<p>The person&apos;s name is TJ Romanowski.</p>
+<h1 id="who-used-their-lastname-as-part-of-their-github-user-id">Who used their lastname as part of their github user ID?</h1>
+<p><pre>
+
+<span class="keyword">var</span> names = []
+<span class="keyword">var</span> students = _.filter(data.comments, <span class="keyword">function</span>(item) {
+    
+    <span class="keyword">var</span> nameStr = _.first(item.body.split(<span class="string">&apos;\r&apos;</span>));
+    <span class="keyword">var</span> lastName = _.last(nameStr.split(<span class="string">&apos; &apos;</span>));
+    <span class="keyword">var</span> lowerCaseLastName = lastName.toLowerCase();
+    <span class="keyword">var</span> lowerCaseLogin = item.user.login.toLowerCase();
+    <span class="keyword">return</span> (lowerCaseLogin.indexOf(lowerCaseLastName) &gt;= <span class="number">0</span>) <span class="comment">//is true if last name is in user login </span>
+  });
+
+
+<span class="keyword">var</span> names = [];
+<span class="comment">// get full name out of body string and add to names[]</span>
+<span class="keyword">function</span> addName(obj) {
+  <span class="keyword">var</span> name = _.last(_.first(obj.body.split(<span class="string">&apos;\r&apos;</span>)).split(<span class="string">&apos;:&apos;</span>));
+  names.push(name);
+}
+students.<span class="keyword">forEach</span>(addName)
+
+<span class="keyword">return</span> names.toString();
+  
+</pre></p>
+<p> William Farmer, Tristan Wagar, Heather Witte, Zach Lamb, Denis Kazakov, satchel spencer, Andrew Linenfelser, Kevin Gifford, Caleb Hsu, Dian Ding, Karen Blakemore, Sanketh S Shetty, Andrey Shprengel,Kari Santos are the students who used their last name as part of their github user id.</p>
 
                     
                     </section>
@@ -542,10 +605,10 @@
         </div>
 
         
-        <a href="../../learning/index.html" class="navigation navigation-prev " aria-label="Previous page: Learning"><i class="fa fa-angle-left"></i></a>
+        <a href="../../learning/week2/index.html" class="navigation navigation-prev " aria-label="Previous page: Week 2"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../learning/intro/q-big-data.html" class="navigation navigation-next " aria-label="Next page: Q. Big data"><i class="fa fa-angle-right"></i></a>
+        <a href="../../learning/week2/viz.html" class="navigation navigation-next " aria-label="Next page: Tableau Viz"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

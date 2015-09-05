@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Intro | book</title>
+        <title>Analysis | book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.2.0">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../learning/intro/q-big-data.html" />
+    <link rel="next" href="../../hackathons/classmates/report.html" />
     
     
-    <link rel="prev" href="../../learning/index.html" />
+    <link rel="prev" href="../../hackathons/classmates/warmup.html" />
     
 
         <!-- head:end -->
@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.1" data-basepath="../.." data-revision="Fri Sep 04 2015 20:42:59 GMT-0600 (MDT)">
+    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Fri Sep 04 2015 20:42:59 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -94,7 +94,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="learning/intro/index.html">
+        <li class="chapter " data-level="1.1" data-path="learning/intro/index.html">
             
                 
                     <a href="../../learning/intro/index.html">
@@ -380,7 +380,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.3" data-path="hackathons/classmates/analysis.html">
+        <li class="chapter active" data-level="2.2.3" data-path="hackathons/classmates/analysis.html">
             
                 
                     <a href="../../hackathons/classmates/analysis.html">
@@ -525,13 +525,103 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="learning-challenge-intro">Learning Challenge: Intro</h1>
-<p>This introductory learning challenge has three questions.</p>
-<ul>
-<li>Q: What is big data? (Team)</li>
-<li>Q: Which programming language is the top favorite among the students in our class? (Team)</li>
-<li>Q: What programming languages have the most packages? (Individual)</li>
-</ul>
+                        <h1 id="analysis">Analysis</h1>
+<p>After completing the warmup exercises, your task is to do four more slightly
+more challenges analyses.</p>
+<h2 id="how-many-students-like-sushi-as-their-favorite-food">How many students like sushi as their favorite food?</h2>
+<p><pre>
+<span class="keyword">var</span> bodies = _.pluck(data.comments,<span class="string">&apos;body&apos;</span>)
+<span class="comment">//console.log(bodies)</span>
+<span class="keyword">var</span> foods = _.filter(bodies, <span class="keyword">function</span>(str) {
+   <span class="keyword">var</span> lower = str.toLowerCase();
+   <span class="keyword">return</span> lower.indexOf(<span class="string">&apos;sushi&apos;</span>) &gt; <span class="number">0</span>;
+  });
+
+<span class="keyword">return</span> foods.length
+</pre></p>
+<p>The answer is 5.</p>
+<h2 id="who-are-the-students-liking-python-the-most">Who are the students liking Python the most?</h2>
+<p><pre>
+<span class="comment">// find all the comment bodies that have &quot;python&quot;, then pull out the names into an array</span>
+<span class="keyword">var</span> bodies = _.pluck(data.comments,<span class="string">&apos;body&apos;</span>)
+<span class="comment">//console.log(bodies)</span>
+<span class="keyword">var</span> python = _.filter(bodies, <span class="keyword">function</span>(str) {
+    <span class="comment">// get the programming language part of the string:</span>
+    <span class="keyword">var</span> strArray = str.split(<span class="string">&apos;\n&apos;</span>) 
+    <span class="comment">// program lang is  element 2</span>
+    <span class="keyword">var</span> progLang = strArray[<span class="number">2</span>];
+    
+   <span class="keyword">var</span> lower = progLang.toLowerCase();
+   <span class="keyword">return</span> lower.indexOf(<span class="string">&apos;python&apos;</span>) &gt; <span class="number">0</span>;
+  });
+
+
+<span class="keyword">var</span> names = [];
+<span class="keyword">function</span> addName(str) {
+  <span class="keyword">var</span> name = _.last(_.first(str.split(<span class="string">&apos;\r&apos;</span>)).split(<span class="string">&apos;: &apos;</span>));
+  names.push(name);
+}
+python.<span class="keyword">forEach</span>(addName)
+
+<span class="keyword">return</span> names.toString();
+
+
+</pre></p>
+<p>Their names are William Farmer,Heather Witte,Zach Lamb,Zhili Yang,John Cronk,Denis Kazakov,Caleb Hsu,Karen Blakemore,Sanketh S Shetty,Andrey Shprengel.</p>
+<h2 id="are-there-more-javascript-lovers-or-java-lovers">Are there more Javascript lovers or Java lovers?</h2>
+<p><pre>
+<span class="comment">// find all the comment bodies that have &quot;python&quot;, then pull out the names into an array</span>
+<span class="keyword">var</span> bodies = _.pluck(data.comments,<span class="string">&apos;body&apos;</span>)
+<span class="keyword">var</span> java = _.filter(bodies, <span class="keyword">function</span>(str) {
+    <span class="keyword">var</span> strArray = str.split(<span class="string">&apos;\n&apos;</span>) 
+    <span class="comment">// program lang is  element 2	</span>
+   <span class="keyword">var</span> lower = strArray[<span class="number">2</span>].toLowerCase();
+   <span class="keyword">return</span> lower.match(/java[^s]/);
+  });
+ 
+
+<span class="keyword">var</span> javascript = _.filter(bodies, <span class="keyword">function</span>(str) {
+    <span class="keyword">var</span> strArray = str.split(<span class="string">&apos;\n&apos;</span>) 
+    <span class="comment">// program lang is  element 2	</span>
+   <span class="keyword">var</span> lower = strArray[<span class="number">2</span>].toLowerCase();
+   <span class="keyword">return</span> lower.match(/javascript|js/);
+  });
+ 
+  <span class="keyword">if</span> (java.length &gt; javascript.length) 
+  	<span class="keyword">return</span> <span class="string">&quot;More people like Java (&quot;</span>+java.length+<span class="string">&quot; vs &quot;</span>+javascript.length+<span class="string">&quot;)&quot;</span>
+  <span class="keyword">else</span> <span class="keyword">if</span> (java.length &lt; javascript.length)
+  	<span class="keyword">return</span> <span class="string">&quot;More people like Javascript (&quot;</span>+javascript.length+<span class="string">&quot; vs &quot;</span>+java.length+<span class="string">&quot;)&quot;</span>
+  <span class="keyword">else</span>  <span class="comment">// equal</span>
+  	<span class="keyword">return</span> <span class="string">&quot;People like Javascript and java the same!(each had &quot;</span>+javascript.length+<span class="string">&quot;)&quot;</span>
+<span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
+</pre></p>
+<p>The answer is More people like Java (4 vs 3).</p>
+<h2 id="who-like-the-same-food-as-kjblakemore">Who like the same food as <code>kjblakemore</code>?</h2>
+<p><pre>
+<span class="keyword">var</span> bodies = _.pluck(data.comments,<span class="string">&apos;body&apos;</span>)
+x = _.find(data.comments, _.matchesProperty(<span class="string">&quot;user.login&quot;</span>, <span class="string">&quot;kjblakemore&quot;</span>));
+<span class="keyword">var</span> food = _.last(x.body.split(<span class="string">&apos;Favorite Food: &apos;</span>)).toLowerCase();
+<span class="keyword">var</span> foodies = _.filter(bodies, <span class="keyword">function</span>(str) {
+    <span class="comment">// get the Favorite food part of string, and make lower case</span>
+    <span class="keyword">var</span> str = _.last(str.split(<span class="string">&apos;Favorite Food: &apos;</span>))
+    <span class="keyword">var</span> lower = str.toLowerCase();
+    <span class="comment">// do the foods match?</span>
+    <span class="keyword">return</span> lower.indexOf(food) &gt;= <span class="number">0</span>;
+  });
+
+<span class="comment">// get all the names of students who matched foods</span>
+<span class="keyword">var</span> names = [];
+<span class="keyword">function</span> addName(str) {
+  <span class="keyword">var</span> name = _.last(_.first(str.split(<span class="string">&apos;\r&apos;</span>)).split(<span class="string">&apos;: &apos;</span>));
+  names.push(name);
+}
+foodies.<span class="keyword">forEach</span>(addName)
+
+<span class="keyword">if</span> (names.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="string">&quot;No one else like the same food as kjblakemore (which was &quot;</span>+food+<span class="string">&quot;).&quot;</span>;
+<span class="keyword">return</span> names.toString()+ <span class="string">&quot;liked the same food as kjblakemore (which was &quot;</span>+food+<span class="string">&quot;).&quot;</span>;
+
+</pre></p>
+<p>No one else like the same food as kjblakemore (which was vegan)..</p>
 
                     
                     </section>
@@ -542,10 +632,10 @@
         </div>
 
         
-        <a href="../../learning/index.html" class="navigation navigation-prev " aria-label="Previous page: Learning"><i class="fa fa-angle-left"></i></a>
+        <a href="../../hackathons/classmates/warmup.html" class="navigation navigation-prev " aria-label="Previous page: Warmup"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../learning/intro/q-big-data.html" class="navigation navigation-next " aria-label="Next page: Q. Big data"><i class="fa fa-angle-right"></i></a>
+        <a href="../../hackathons/classmates/report.html" class="navigation navigation-next " aria-label="Next page: Report"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
