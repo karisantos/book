@@ -23,7 +23,7 @@ return students.length
 
 {{result}} students submitted their personal information by the end of Sept 24, 2015.
 
-# How many stuents have the term "computer" or "cs" in the description of the department or major?
+# How many students have the term "computer" or "cs" in the description of the department or major?
 
 {% lodash %}
 // find all the comment bodies that have "cs" or csci, then pull out the names into an array
@@ -42,7 +42,7 @@ var major = _.filter(bodies, function(str) {
 return major.length;
 {% endlodash %}
 
-{{result}} have the term "computer", "cs" or "csci" in the description of the department or major
+{{result}} students have the term "computer", "cs" or "csci" in the description of the department or major
 
 # Who has the user id 13950166?
 
