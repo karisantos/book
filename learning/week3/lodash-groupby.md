@@ -140,15 +140,15 @@ Who is the first person in each age group?
 {"1":"Peter Pan","3":"Kelly Fan","4":"Mary Smith","5":"John Smith"}
 
 {% solution %}
-
-var result = 'not done'
+var groups = _.groupBy(data, function(d){
+        return Math.floor(d.age / 10)    
+    })
+var result = _.mapValues(groups, function(value){
+        return _.first(value).name;
+    })
 return result
 
 {% endlodashexercise %}
-
-
-
-
 
 
 {% lodashexercise %}
@@ -211,9 +211,13 @@ Group people by their last name
 }
 
 {% solution %}
+var groups = _.groupBy(data, function(d){
+  var nameArr = _.words(d.name);
+  var lastName = _.rest(nameArr).join(' ');
+  return lastName;
+    })
 
-var result = 'not done'
-return result
+return groups;
 
 {% endlodashexercise %}
 
@@ -248,9 +252,16 @@ How many people are in each last-name group?
 
 {% solution %}
 
-var result = 'not done'
-return result
+var groups = _.groupBy(data, function(d){
+  var nameArr = _.words(d.name);
+  var lastName = _.rest(nameArr).join(' ');
+  return lastName;
+    })
 
+var result = _.mapValues(groups, function(value){
+        return value.length
+    })
+return result
 {% endlodashexercise %}
 
 
@@ -285,8 +296,14 @@ Who is the first person in each last-name group?
 }
 
 {% solution %}
-
-var result = 'not done'
+var groups = _.groupBy(data, function(d){
+  var nameArr = _.words(d.name);
+  var lastName = _.rest(nameArr).join(' ');
+  return lastName;
+    })
+var result = _.mapValues(groups, function(value){
+        return _.first(value).name;
+    })
 return result
 
 {% endlodashexercise %}
