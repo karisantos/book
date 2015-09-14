@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.4.3" data-basepath="../.." data-revision="Sun Sep 13 2015 17:33:57 GMT-0600 (MDT)">
+    <div class="book" data-level="1.4.3" data-basepath="../.." data-revision="Sun Sep 13 2015 23:44:50 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -1758,7 +1758,7 @@ aggregate analysis.</p>
 });
 
 <span class="keyword">return</span> result;</pre></div><p></p>
-<p></p><h2>How many Smith&apos;s are in each city?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;travel&apos;], city: &apos;Denver&apos;},
+<p></p><h2>How many Smith&apos;s are in each city?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;travel&apos;], city: &apos;Denver&apos;},
  {name: &apos;Mary Smith&apos;, age: 42, favorites: [&apos;sports&apos;, &apos;travel&apos;], city: &apos;Boulder&apos;},
  {name: &apos;Peter Pan&apos;, age: 15, favorites: [&apos;movies&apos;, &apos;tv&apos;, &apos;gardening&apos;], city: &apos;Denver&apos;},
  {name: &apos;Kelly Fan&apos;, age: 35, favorites: [&apos;movies&apos;, &apos;travel&apos;, &apos;programming&apos;], city: &apos;Boulder&apos;},
@@ -1768,31 +1768,23 @@ aggregate analysis.</p>
   &quot;Denver&quot;: 1,
   &quot;Boulder&quot;: 2
 }</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>{
-  &quot;Denver&quot;: &quot;Johnson&quot;,
-  &quot;Boulder&quot;: &quot;Smith&quot;
+  &quot;Denver&quot;: 1,
+  &quot;Boulder&quot;: 2
 }</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> groups = _.groupBy(data, <span class="keyword">function</span>(d){
         <span class="keyword">return</span> d.city;  
     });
-<span class="keyword">var</span> result =  _.mapValues(groups, <span class="keyword">function</span>(d) {
-  <span class="keyword">var</span> name = _.pluck(d, <span class="string">&apos;name&apos;</span>);
-  <span class="keyword">var</span> lastName = _.last(_.words(name));
-  <span class="keyword">return</span> lastName;
-});
-console.log(result);
-<span class="comment">/*var smithCount = 0;
-  smithCount = _.reduce(_.pluck(d, &apos;name&apos;), function(smithCount,name) {
-    var lastName = _.last(_.words(name));
-    console.log(name+&apos;+&gt;&apos;+lastName)
-    return lastName == &apos;Smith&apos;? smithCount+1: smithCount;
-  })
-  return smithCount;
-});
-*/</span>
-<span class="keyword">return</span> result;
 
-<span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre><div class="console">           console&gt; {&quot;Denver&quot;:&quot;Johnson&quot;,&quot;Boulder&quot;:&quot;Smith&quot;}
-</div></div><p></p>
+<span class="keyword">var</span> result =  _.mapValues(groups, <span class="keyword">function</span>(d) {
+  <span class="keyword">var</span> names = _.pluck(d, <span class="string">&apos;name&apos;</span>);
+  <span class="keyword">var</span> smithNames = _.partition(names, <span class="keyword">function</span>(name) {
+    <span class="keyword">var</span> nameArr = _.words(name);
+    <span class="keyword">var</span> lastName = _.last(nameArr);
+    <span class="keyword">return</span> (lastName == <span class="string">&apos;Smith&apos;</span>) 
+  });
+  <span class="keyword">return</span> smithNames[<span class="number">0</span>].length;
+});
+
+<span class="keyword">return</span> result;</pre></div><p></p>
 
                     
                     </section>
@@ -1816,10 +1808,6 @@ console.log(result);
 
     
     <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
-    
-
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>
