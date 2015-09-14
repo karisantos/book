@@ -1020,24 +1020,17 @@ How many Smith's are in each city?
 var groups = _.groupBy(data, function(d){
         return d.city;  
     });
-var result =  _.mapValues(groups, function(d) {
-  var name = _.pluck(d, 'name');
-  var lastName = _.last(_.words(name));
-  return lastName;
-});
-console.log(result);
-/*var smithCount = 0;
-  smithCount = _.reduce(_.pluck(d, 'name'), function(smithCount,name) {
-    var lastName = _.last(_.words(name));
-    console.log(name+'+>'+lastName)
-    return lastName == 'Smith'? smithCount+1: smithCount;
-  })
-  return smithCount;
-});
-*/
-return result;
 
-var result = 'not done'
-return result
+var result =  _.mapValues(groups, function(d) {
+  var names = _.pluck(d, 'name');
+  var smithNames = _.partition(names, function(name) {
+    var nameArr = _.words(name);
+    var lastName = _.last(nameArr);
+    return (lastName == 'Smith') 
+  });
+  return smithNames[0].length;
+});
+
+return result;
 
 {% endlodashexercise %}
