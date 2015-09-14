@@ -408,9 +408,14 @@ What are all person-favorite pairs?
 {% solution %}
 
 // hint: use nested _.map, then  _.flatten
-
-var result = 'not done'
-return result
+// hint: use nested _.map, then  _.flatten
+var pairs = _.map(data, function(d){
+  var favpairs = _.map(d.favorites, function(f){
+    return {name:d.name,favorite:f};
+  });
+  return favpairs;
+});
+return _.flatten(pairs);
 
 {% endlodashexercise %}
 
@@ -513,10 +518,14 @@ What are all age-favorite pairs (in ascending order)?
 
 {% solution %}
 
-// hint: use nested _.map, then  _.flatten
-
-var result = 'not done'
-return result
+var ageSorted = _.sortBy(data,'age');
+var pairs = _.map(ageSorted, function(d){
+  var favpairs = _.map(d.favorites, function(f){
+    return {age:d.age,favorite:f};
+  });
+  return favpairs;
+});
+return _.flatten(pairs);
 
 {% endlodashexercise %}
 
@@ -636,8 +645,20 @@ Group people by their favorites.
 {% solution %}
 
 // hint: first, apply _.groupBy to the name-favovrite pairs computed earlier
-var result = 'not done'
-return result
+var pairs = _.map(data, function(d){
+  var favpairs = _.map(d.favorites, function(f){
+    return {name:d.name,favorite:f};
+  });
+  return favpairs;
+});
+
+var flpairs  = _.flatten(pairs);
+
+var groups = _.groupBy(flpairs, function(d){
+        return d.favorite;  
+    })
+
+return groups;
 
 {% endlodashexercise %}
 
@@ -702,10 +723,26 @@ What are the names of the people in these 'favorite' groups?
 }
 
 {% solution %}
+var pairs = _.map(data, function(d){
+  var favpairs = _.map(d.favorites, function(f){
+    return {name:d.name,favorite:f};
+  });
+  return favpairs;
+});
 
+var flpairs  = _.flatten(pairs);
 
-var result = 'not done'
-return result
+var groups = _.groupBy(flpairs, function(d){
+        return d.favorite;  
+    });
+
+var result =  _.mapValues(groups, function(d) {
+  var names = _.pluck(d,'name') 
+  return names; 
+});
+
+return result;
+
 
 {% endlodashexercise %}
 
@@ -741,9 +778,26 @@ What are the sizes of these 'favorite' groups?
 }
 
 {% solution %}
+var pairs = _.map(data, function(d){
+  var favpairs = _.map(d.favorites, function(f){
+    return {name:d.name,favorite:f};
+  });
+  return favpairs;
+});
 
-var result = 'not done'
-return result
+var flpairs  = _.flatten(pairs);
+
+var groups = _.groupBy(flpairs, function(d){
+        return d.favorite;  
+    });
+
+var result =  _.mapValues(groups, function(d) {
+  
+  return d.length; 
+});
+
+return result;
+
 
 {% endlodashexercise %}
 
@@ -844,9 +898,10 @@ Group people by city
   ]
 }
 {% solution %}
-
-var result = 'not done'
-return result
+var groups = _.groupBy(data, function(d){
+        return d.city;  
+    });
+return groups;
 
 {% endlodashexercise %}
 
@@ -879,9 +934,15 @@ Group people by city and count how many people in each city
 }
 
 {% solution %}
+var groups = _.groupBy(data, function(d){
+        return d.city;  
+    });
+var result =  _.mapValues(groups, function(d) {
+  
+  return _.size(d); 
+});
 
-var result = 'not done'
-return result
+return result;
 
 {% endlodashexercise %}
 
@@ -913,9 +974,18 @@ What is the oldest age in each city?
 }
 
 {% solution %}
+var groups = _.groupBy(data, function(d){
+        return d.city;  
+    });
+var result =  _.mapValues(groups, function(d) {
+  var largest = _.reduce(_.pluck(d, 'age'), function(largest,n) {
+    return largest >= n? largest: n
+  })
+  return largest
+});
 
-var result = 'not done'
-return result
+return result;
+
 
 {% endlodashexercise %}
 
@@ -947,6 +1017,25 @@ How many Smith's are in each city?
 }
 
 {% solution %}
+var groups = _.groupBy(data, function(d){
+        return d.city;  
+    });
+var result =  _.mapValues(groups, function(d) {
+  var name = _.pluck(d, 'name');
+  var lastName = _.last(_.words(name));
+  return lastName;
+});
+console.log(result);
+/*var smithCount = 0;
+  smithCount = _.reduce(_.pluck(d, 'name'), function(smithCount,name) {
+    var lastName = _.last(_.words(name));
+    console.log(name+'+>'+lastName)
+    return lastName == 'Smith'? smithCount+1: smithCount;
+  })
+  return smithCount;
+});
+*/
+return result;
 
 var result = 'not done'
 return result
