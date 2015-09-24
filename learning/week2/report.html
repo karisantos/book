@@ -29,6 +29,10 @@
         
     
         
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+        
+    
+        
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
         
     
@@ -48,7 +52,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.3.1" data-basepath="../.." data-revision="Sun Sep 20 2015 22:54:31 GMT-0600 (MDT)">
+    <div class="book" data-level="1.3.1" data-basepath="../.." data-revision="Wed Sep 23 2015 22:03:33 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -379,6 +383,72 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6" data-path="learning/week5/index.html">
+            
+                
+                    <a href="../../learning/week5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        Week 5
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="learning/week5/birdstrike-report.html">
+            
+                
+                    <a href="../../learning/week5/birdstrike-report.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        Birdstrike Report
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="learning/week5/viz-steps.html">
+            
+                
+                    <a href="../../learning/week5/viz-steps.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.2.</b>
+                        
+                        Viz Intro
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="learning/week5/viz-drills.html">
+            
+                
+                    <a href="../../learning/week5/viz-drills.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.3.</b>
+                        
+                        Viz Drills
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
             </ul>
             
@@ -583,6 +653,42 @@
             
         </li>
     
+        <li class="chapter " data-level="2.4" data-path="hackathons/birdstrikes/index.html">
+            
+                
+                    <a href="../../hackathons/birdstrikes/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Birdstrikes
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="hackathons/birdstrikes/report.html">
+            
+                
+                    <a href="../../hackathons/birdstrikes/report.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.1.</b>
+                        
+                        Report
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
             </ul>
             
@@ -698,70 +804,56 @@
 class, we brainstormed and came up with a long list of further questions we can
 ask based on this data. Our team chose to tackle on the following:</p>
 <h1 id="how-many-students-submitted-personal-information-on-or-before-the-class-deadline-of-8-24-15">How many students submitted personal information on or before the class deadline of 8/24/15?</h1>
-<p><pre>
-<span class="keyword">var</span> dueDate = <span class="keyword">new</span> Date(<span class="number">2015</span>, <span class="number">7</span>, <span class="number">25</span>);  <span class="comment">// start of sept 25 2015 </span>
+<p><pre><code>var dueDate = new Date(2015, 7, 25);  // start of sept 25 2015 
 
-<span class="comment">// filter array to inculde only students whose create date was before Sept 25 0hrs</span>
-<span class="keyword">var</span> students = _.filter(data.comments, <span class="keyword">function</span>(item) {
-    <span class="keyword">var</span> createDate = <span class="keyword">new</span> Date(item.created_at)
-    <span class="keyword">return</span> (createDate &lt;= dueDate)
-   
-  });
-
-<span class="keyword">return</span> students.length
-</pre></p>
+// filter array to inculde only students whose create date was before Sept 25 0hrs
+var students = _.filter(data.comments, function(item) {
+	var createDate = new Date(item.created_at)
+	return (createDate <= dueDate)="" });="" return="" students.length<="" code=""></=></code></pre></p>
 <p>22 students submitted their personal information by the end of Sept 24, 2015.</p>
 <h1 id="how-many-students-have-the-term-computer-or-cs-in-the-description-of-the-department-or-major">How many students have the term &quot;computer&quot; or &quot;cs&quot; in the description of the department or major?</h1>
-<p><pre>
-<span class="comment">// find all the comment bodies that have &quot;cs&quot; or csci, then pull out the names into an array</span>
-<span class="keyword">var</span> bodies = _.pluck(data.comments,<span class="string">&apos;body&apos;</span>)
-<span class="keyword">var</span> major = _.filter(bodies, <span class="keyword">function</span>(str) {
-    <span class="comment">// get the major</span>
-    <span class="keyword">var</span> strArray = str.split(<span class="string">&apos;\n&apos;</span>) ;
-    <span class="comment">// Major is element 1</span>
-    <span class="keyword">var</span> major = strArray[<span class="number">1</span>];
-    
-   <span class="keyword">var</span> lower = major.toLowerCase();
-   <span class="comment">// space added in front of term to avoid words where &quot;cs&quot; in middle of word</span>
-   <span class="keyword">return</span> (lower.indexOf(<span class="string">&apos; computer&apos;</span>) &gt; <span class="number">0</span>) | (lower.indexOf(<span class="string">&apos; cs&apos;</span>) &gt; <span class="number">0</span>);
+<p><pre><code>// find all the comment bodies that have &quot;cs&quot; or csci, then pull out the names into an array
+var bodies = _.pluck(data.comments,&apos;body&apos;)
+var major = _.filter(bodies, function(str) {
+	// get the major
+	var strArray = str.split(&apos;\n&apos;) ;
+	// Major is element 1
+	var major = strArray[1];
+	
+   var lower = major.toLowerCase();
+   // space added in front of term to avoid words where &quot;cs&quot; in middle of word
+   return (lower.indexOf(&apos; computer&apos;) &gt; 0) | (lower.indexOf(&apos; cs&apos;) &gt; 0);
   });
 
-<span class="keyword">return</span> major.length;
-</pre></p>
+return major.length;</code></pre></p>
 <p>22 students have the term &quot;computer&quot;, &quot;cs&quot; or &quot;csci&quot; in the description of the department or major</p>
 <h1 id="who-has-the-user-id-13950166">Who has the user id 13950166?</h1>
-<p><pre>
-x = _.find(data.comments, _.matchesProperty(<span class="string">&quot;user.id&quot;</span>, <span class="number">13950166</span>));
-<span class="keyword">var</span> nameStr = _.first(x.body.split(<span class="string">&apos;\r&apos;</span>));
-<span class="keyword">var</span> name = _.last(nameStr.split(<span class="string">&apos;: &apos;</span>))
-<span class="keyword">return</span> name
-</pre></p>
+<p><pre><code>x = _.find(data.comments, _.matchesProperty(&quot;user.id&quot;, 13950166));
+var nameStr = _.first(x.body.split(&apos;\r&apos;));
+var name = _.last(nameStr.split(&apos;: &apos;))
+return name</code></pre></p>
 <p>The person&apos;s name is TJ Romanowski.</p>
 <h1 id="who-used-their-lastname-as-part-of-their-github-user-id">Who used their lastname as part of their github user ID?</h1>
-<p><pre>
-
-<span class="keyword">var</span> names = []
-<span class="keyword">var</span> students = _.filter(data.comments, <span class="keyword">function</span>(item) {
-    
-    <span class="keyword">var</span> nameStr = _.first(item.body.split(<span class="string">&apos;\r&apos;</span>));
-    <span class="keyword">var</span> lastName = _.last(nameStr.split(<span class="string">&apos; &apos;</span>));
-    <span class="keyword">var</span> lowerCaseLastName = lastName.toLowerCase();
-    <span class="keyword">var</span> lowerCaseLogin = item.user.login.toLowerCase();
-    <span class="keyword">return</span> (lowerCaseLogin.indexOf(lowerCaseLastName) &gt;= <span class="number">0</span>) <span class="comment">//is true if last name is in user login </span>
+<p><pre><code>var names = []
+var students = _.filter(data.comments, function(item) {
+	
+	var nameStr = _.first(item.body.split(&apos;\r&apos;));
+	var lastName = _.last(nameStr.split(&apos; &apos;));
+	var lowerCaseLastName = lastName.toLowerCase();
+	var lowerCaseLogin = item.user.login.toLowerCase();
+	return (lowerCaseLogin.indexOf(lowerCaseLastName) &gt;= 0) //is true if last name is in user login 
   });
 
 
-<span class="keyword">var</span> names = [];
-<span class="comment">// get full name out of body string and add to names[]</span>
-<span class="keyword">function</span> addName(obj) {
-  <span class="keyword">var</span> name = _.last(_.first(obj.body.split(<span class="string">&apos;\r&apos;</span>)).split(<span class="string">&apos;:&apos;</span>));
+var names = [];
+// get full name out of body string and add to names[]
+function addName(obj) {
+  var name = _.last(_.first(obj.body.split(&apos;\r&apos;)).split(&apos;:&apos;));
   names.push(name);
 }
-students.<span class="keyword">forEach</span>(addName)
+students.forEach(addName)
 
-<span class="keyword">return</span> names.toString();
-  
-</pre></p>
+return names.toString();</code></pre></p>
 <p> William Farmer, Tristan Wagar, Heather Witte, Zach Lamb, Denis Kazakov, satchel spencer, Andrew Linenfelser, Kevin Gifford, Caleb Hsu, Dian Ding, Karen Blakemore, Sanketh S Shetty, Andrey Shprengel,Kari Santos are the students who used their last name as part of their github user id.</p>
 
                     
@@ -783,6 +875,14 @@ students.<span class="keyword">forEach</span>(addName)
 
         
 <script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-bigdata/bigdata.js"></script>
+    
+
+    
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+    
 
     
     <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
