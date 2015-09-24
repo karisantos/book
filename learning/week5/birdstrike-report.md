@@ -34,6 +34,7 @@ return "[answer]"
 return "[answer]"
 {% endlodash %}
 
+<<<<<<< HEAD
 # Which plane strikes the most birds? 
 
 {% lodash %}
@@ -63,6 +64,13 @@ The table lists the top 10 aircraft makes that had the most incidents.
     </tr>
 {% endfor %}
 </table>
+=======
+# (Question 4) by (Name)
+
+{% lodash %}
+return "[answer]"
+{% endlodash %}
+>>>>>>> upstream/master
 
 # (Question 5) by (Name)
 
