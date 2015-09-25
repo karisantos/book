@@ -22,7 +22,6 @@
         * [Birdstrike Report](learning/week5/birdstrike-report.md)        
         * [Viz Intro](learning/week5/viz-steps.md)        
         * [Viz Drills](learning/week5/viz-drills.md)                
-        * [Viz Drills](learning/week5/viz-drills.md)    
         * [Viz Pokemon](learning/week5/viz-pokemon.md)                
 * [Hackathons](hackathons/index.md)
     * [Tinker](hackathons/tinker/index.md)
