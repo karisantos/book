@@ -14,6 +14,8 @@ This time, the data is not already prepared for you in a nice JSON format. You
 will need to do it on your own, replacing the placeholder `birdstrike.json` with
 real data.
 
+If my numbers seem too small, it's because I'm using a subset of the 1.5MB of birdstrike.json
+
 # Which airlines have the worst luck with birdstrikes in terms of damage caused?
 This question was asked by (calebhsu).
 
