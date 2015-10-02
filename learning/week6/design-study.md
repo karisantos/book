@@ -1,3 +1,3 @@
 # Design Pattern Change Study
 
-(200 words summary of the design study your team proposed)
+Our group chose to focus on food trends. We were struck by how everyone eats kale now, but 5 years ago no one had even heard of it.  Data sources that we thought would be useful included farm output statistics from the Department of Agriculture, grocery sales, and mentions in recipe websites and pinterest/reddit/facebook. We would want to follow these data over time. We thought a use for this analysis would be to allow farmers to project demand for their crops in choosing what to plant in the future.
