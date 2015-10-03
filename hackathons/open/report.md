@@ -7,7 +7,7 @@ Use only Javascript and SVG to produce a data analysis / visualization report.
 This report is prepared by
 * [Kari Santos](https://github.com/karisantos)
 * [Zachary Lamb](https://github.com/ZachLamb)
-<!-- * [Denis Kazakov](https://github.com/94kazakov) -->
+* [Denis Kazakov](https://github.com/94kazakov)
 
 <a name="top"/>
 <div id="autonav"></div>
